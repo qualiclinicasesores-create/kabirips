@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>KABIR IPS S.A.S. | Fisioterapia y Rehabilitación Integral en Florencia, Caquetá</title>
+<meta name="description" content="KABIR IPS S.A.S.: fisioterapia ortopédica, pediátrica y geriátrica, ondas de choque y presoterapia en Florencia, Caquetá.">
+<link rel="icon" href="assets/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Nunito+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+
+<style>
+/* ===== PALETA CORPORATIVA (extraída del logo) — cambie los colores solo aquí ===== */
+:root{
+  --teal:#1A9B90;      /* PRIMARIO: turquesa de la mano del logo */
+  --teal-d:#0F6B63;    /* turquesa oscuro (títulos, pie de página) */
+  --teal-l:#E4F4F2;    /* turquesa claro (fondos suaves) */
+  --rojo:#D5073C;      /* SECUNDARIO/ACENTO: rojo de la figura del logo */
+  --rojo-d:#A8052E;
+  --tinta:#143F3B; --gris:#4F6764; --fondo:#F6FBFA; --blanco:#fff;
+  --serif:'Fraunces',Georgia,serif; --sans:'Nunito Sans',system-ui,sans-serif; --max:1120px;
+}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth;scroll-padding-top:88px}
+body{font:400 1.0625rem/1.65 var(--sans);color:var(--tinta);background:var(--fondo)}
+img{max-width:100%;display:block}
+a{color:var(--teal-d)}
+:focus-visible{outline:3px solid var(--rojo);outline-offset:3px}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 20px}
+section{padding:72px 0}
+h1,h2,h3{font-family:var(--serif);line-height:1.2;color:var(--teal-d)}
+h2{font-size:clamp(1.7rem,3.5vw,2.4rem);margin-bottom:12px}
+h3{font-size:1.25rem;margin-bottom:8px}
+.lead{max-width:62ch;color:var(--gris);margin-bottom:32px}
+
+/* Botones */
+.btn{display:inline-flex;align-items:center;gap:8px;padding:12px 22px;border-radius:999px;text-decoration:none;border:2px solid transparent;cursor:pointer;font:700 1rem var(--sans);transition:background .2s}
+.btn-rojo{background:var(--rojo);color:#fff}.btn-rojo:hover{background:var(--rojo-d)}
+.btn-teal{background:var(--teal);color:#fff}.btn-teal:hover{background:var(--teal-d)}
+.btn-borde{border-color:var(--teal);color:var(--teal-d);background:transparent}.btn-borde:hover{background:var(--teal-l)}
+
+/* Encabezado con logo */
+header{position:sticky;top:0;z-index:50;background:#fff;border-bottom:4px solid var(--teal);box-shadow:0 2px 0 var(--rojo)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:76px;gap:16px}
+.marca{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--teal-d);font:700 1.3rem var(--serif)}
+.marca img{height:60px;width:auto}
+.marca small{display:block;font:600 .72rem var(--sans);color:var(--rojo)}
+nav ul{display:flex;gap:22px;list-style:none;padding:0;align-items:center}
+nav a:not(.btn){text-decoration:none;color:var(--tinta);font-weight:700}
+nav a:not(.btn):hover{color:var(--rojo)}
+.menu-btn{display:none;background:none;border:2px solid var(--teal);border-radius:8px;padding:6px 10px;font-size:1.3rem;color:var(--teal-d);cursor:pointer}
+
+/* Carrusel (las imágenes traen su propio texto: se muestran completas) */
+.carrusel{position:relative;background:#fff;overflow:hidden;touch-action:pan-y;-webkit-user-select:none;user-select:none}
+.slides{display:flex;transition:transform .7s ease}
+.slide{min-width:100%;aspect-ratio:1449/720;background:var(--teal-l)}
+.slide img{width:100%;height:100%;object-fit:cover;-webkit-user-drag:none}
+.flecha{position:absolute;top:50%;transform:translateY(-50%);width:46px;height:46px;border-radius:50%;border:0;background:var(--teal);color:#fff;font-size:1.5rem;cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,.3)}
+.flecha:hover{background:var(--rojo)}
+.prev{left:14px}.next{right:14px}
+.puntos{position:absolute;bottom:12px;left:0;right:0;display:flex;justify-content:center;gap:10px}
+.punto{width:13px;height:13px;border-radius:50%;border:2px solid var(--teal);background:#fff;padding:0;cursor:pointer}
+.punto.activo{background:var(--rojo);border-color:var(--rojo)}
+
+.franja{background:var(--teal);color:#fff;padding:26px 0}
+.franja .wrap{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:18px}
+.franja p{font:500 1.4rem var(--serif)}
+.franja .acciones{display:flex;gap:12px;flex-wrap:wrap}
+.franja .btn-borde{border-color:#fff;color:#fff}.franja .btn-borde:hover{background:rgba(255,255,255,.18)}
+
+/* Nosotros */
+.dos-col{display:grid;grid-template-columns:1.3fr 1fr;gap:40px;align-items:start}
+.perfil{background:var(--teal-l);border-left:5px solid var(--rojo);padding:24px;border-radius:0 12px 12px 0}
+.perfil p+p{margin-top:8px}
+.mv{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:40px}
+.mv article{background:#fff;padding:28px;border-radius:12px;border-top:5px solid var(--teal)}
+.mv article:last-child{border-top-color:var(--rojo)}
+
+/* Servicios: tarjetas con colores del logo */
+#servicios{background:#fff}
+.lista-serv{display:grid;grid-template-columns:repeat(auto-fit,minmax(310px,1fr));gap:22px}
+.tarjeta{background:var(--teal-l);border-radius:14px;overflow:hidden;border:1px solid #bfe3df}
+.tarjeta h3{background:var(--teal);color:#fff;margin:0;padding:14px 20px;border-bottom:4px solid var(--rojo)}
+.tarjeta p{padding:18px 20px;color:var(--tinta)}
+.nota{margin-top:28px;display:flex;flex-wrap:wrap;gap:16px;align-items:center}
+
+/* Horarios, contacto */
+.cajas{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px}
+.caja{background:#fff;border:1px solid #cfe3e0;border-top:5px solid var(--teal);border-radius:12px;padding:24px}
+.caja:nth-child(even){border-top-color:var(--rojo)}
+.caja ul{list-style:none;padding:0}
+.caja li{display:flex;justify-content:space-between;gap:12px;padding:6px 0;border-bottom:1px dashed #d5e5e3}
+.caja li:last-child{border:0}
+.redes{display:flex;gap:12px;margin-top:12px}
+.redes a{width:46px;height:46px;border-radius:50%;background:var(--teal);color:#fff;display:grid;place-items:center}
+.redes a:hover{background:var(--rojo)}
+.redes svg{width:22px;height:22px;fill:currentColor}
+#pqrs{background:var(--teal-l)}
+
+/* Pie de página */
+footer{background:var(--teal-d);color:#dcf0ee;padding:48px 0 96px;font-size:.96rem;border-top:6px solid var(--rojo)}
+footer a{color:#fff}
+footer h3{color:#fff;font-size:1.1rem}
+.pie{display:grid;grid-template-columns:1.2fr 1fr 1fr 1fr;gap:28px}
+.pie ul{list-style:none;padding:0}.pie li{margin-bottom:6px}
+.pie-logo{background:#fff;border-radius:10px;padding:6px 10px;display:inline-block;margin-bottom:10px}
+.pie-logo img{height:56px;width:auto}
+.legal{margin-top:28px;padding-top:18px;border-top:1px solid rgba(255,255,255,.25);font-size:.85rem}
+
+/* Botón flotante WhatsApp */
+.wa{position:fixed;right:18px;bottom:18px;z-index:60;display:flex;align-items:center;gap:10px;background:#25d366;color:#fff;text-decoration:none;font-weight:700;padding:14px 20px;border-radius:999px;box-shadow:0 6px 18px rgba(0,0,0,.3)}
+.wa:hover{background:#1da851}
+.wa svg{width:28px;height:28px;fill:#fff}
+
+/* Ventana de política de datos */
+dialog{width:min(820px,94vw);max-height:88vh;border:0;border-radius:14px;padding:0;color:var(--tinta)}
+dialog::backdrop{background:rgba(10,40,38,.7)}
+.dlg-cab{position:sticky;top:0;background:#fff;display:flex;justify-content:space-between;align-items:center;gap:12px;padding:14px 24px;border-bottom:3px solid var(--teal)}
+.dlg-cab h2{font-size:1.15rem;margin:0}
+.dlg-cuerpo{padding:8px 24px 28px;font-size:.98rem}
+.dlg-cuerpo h3{margin-top:22px;font-size:1.1rem}
+.dlg-cuerpo p,.dlg-cuerpo li{margin-top:8px}
+
+@media (max-width:900px){
+  .menu-btn{display:block}
+  nav ul{display:none;position:absolute;top:76px;left:0;right:0;background:#fff;flex-direction:column;padding:18px 20px;border-bottom:4px solid var(--teal);align-items:flex-start}
+  nav ul.abierto{display:flex}
+  .dos-col,.mv,.pie{grid-template-columns:1fr}
+  section{padding:52px 0}
+  .marca img{height:50px}.marca small{display:none}
+  .flecha{width:36px;height:36px;font-size:1.2rem}
+  .wa span{display:none}.wa{padding:14px}
+}
+@media (prefers-reduced-motion:reduce){.slides{transition:none}html{scroll-behavior:auto}}
+</style>
+</head>
+
+<body>
+
+<!-- ENCABEZADO: LOGO Y MENÚ -->
+<header>
+  <div class="wrap nav">
+    <a class="marca" href="#inicio"><img src="assets/logo.png" alt="Logo de KABIR IPS S.A.S."><span>KABIR IPS<small>Fisioterapia y rehabilitación integral</small></span></a>
+    <button class="menu-btn" id="menuBtn" aria-label="Abrir menú" aria-expanded="false">☰</button>
+    <nav aria-label="Principal">
+      <ul id="menu">
+        <li><a href="#nosotros">Nosotros</a></li>
+        <li><a href="#servicios">Servicios</a></li>
+        <li><a href="#horarios">Horarios</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+        <li><a href="#pqrs">PQRS</a></li>
+        <li><a class="btn btn-rojo" href="https://w.app/fyrmqw" target="_blank" rel="noopener">Solicitar cita</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="inicio">
+
+<!-- SECCIÓN HERO / CARRUSEL — las 5 imágenes se configuran en "IMAGENES_CARRUSEL" (al final, en el <script>) -->
+<div class="carrusel" id="carrusel" role="region" aria-roledescription="carrusel" aria-label="Imágenes de KABIR IPS">
+  <div class="slides" id="slides"></div>
+  <button class="flecha prev" id="prev" aria-label="Imagen anterior">‹</button>
+  <button class="flecha next" id="next" aria-label="Imagen siguiente">›</button>
+  <div class="puntos" id="puntos"></div>
+</div>
+
+<!-- FRANJA DE SLOGAN Y LLAMADOS A LA ACCIÓN -->
+<div class="franja">
+  <div class="wrap">
+    <p>“Su rehabilitación en nuestras manos”</p>
+    <div class="acciones">
+      <a class="btn btn-rojo" href="https://w.app/fyrmqw" target="_blank" rel="noopener">Solicitar cita por WhatsApp</a>
+      <a class="btn btn-borde" href="mailto:kabirfisioips@gmail.com">Escribir al correo</a>
+    </div>
+  </div>
+</div>
+
+<!-- SECCIÓN QUIÉNES SOMOS -->
+<section id="nosotros">
+  <div class="wrap">
+    <div class="dos-col">
+      <div>
+        <h2>Quiénes somos</h2>
+        <p class="lead" style="margin-bottom:14px">KABIR IPS S.A.S. (Unidad de Fisioterapia y Rehabilitación Integral Kabir Zomac S.A.S.) es una institución prestadora de servicios de salud, habilitada en el segundo semestre de 2023.</p>
+        <p>Ofrecemos fisioterapia y rehabilitación especializada, con amplia experiencia en el tratamiento de personas con discapacidad parcial o total. Realizamos abordajes terapéuticos soportados en razonamiento profesional, equipos de alta tecnología, altos estándares de calidad y talento humano idóneo, comprometido con la atención centrada en el paciente y su familia.</p>
+        <p style="margin-top:12px">Fue creada por la fisioterapeuta Luz Indira Mosquera Palacios, egresada de la Universidad del Rosario, con maestría de la Universidad Autónoma de Manizales y amplia trayectoria profesional. Su propósito: contribuir a la rehabilitación de la población del departamento del Caquetá, potenciando su recuperación, bienestar integral y calidad de vida.</p>
+      </div>
+      <aside class="perfil">
+        <h3>Perfil profesional</h3>
+        <p>Fisioterapia</p>
+        <p>Maestría en Discapacidad</p>
+        <p>Especialista en Administración de la Salud</p>
+        <p>Especialista en Seguridad y Salud en el Trabajo</p>
+      </aside>
+    </div>
+
+    <!-- MISIÓN Y VISIÓN -->
+    <div class="mv">
+      <article>
+        <h3>Misión</h3>
+        <p>Ofertamos servicios de fisioterapia y rehabilitación especializada, integrando talento humano competente, atención humanizada, enfoque en seguridad del paciente, tecnología de avanzada y gestión de la calidad para garantizar la recuperación y satisfacción de los pacientes, contemplando su dimensión biológica, psicológica y social.</p>
+      </article>
+      <article>
+        <h3>Visión</h3>
+        <p>Consolidarse y posicionarse en el 2033 como un referente regional y nacional por la excelencia en la prestación de servicios de fisioterapia y rehabilitación especializada, con mejoramiento continuo, estándares de alta calidad, tecnología de vanguardia, sostenibilidad, gestión del talento humano e innovación organizacional, factores que posibilitan la recuperación de la condición de salud y generan satisfacción, bienestar y calidad de vida en nuestros usuarios.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- SECCIÓN DE SERVICIOS (para agregar uno, copie un bloque <article class="tarjeta">) -->
+<section id="servicios">
+  <div class="wrap">
+    <h2>Servicios y tratamientos</h2>
+    <p class="lead">Atención presencial y personalizada. Cada proceso incluye valoración inicial, proyección del abordaje terapéutico y valoración final.</p>
+    <div class="lista-serv">
+      <article class="tarjeta"><h3>Valoración fisioterapéutica</h3>
+        <p>Valoración inicial para proyectar el abordaje terapéutico según las necesidades del paciente, con objetivos de tratamiento, pronóstico y seguimiento terapéutico.</p></article>
+      <article class="tarjeta"><h3>Fisioterapia ortopédica</h3>
+        <p>Para alteraciones musculoesqueléticas como síndrome del manguito rotador, síndrome del túnel del carpo, epicondilitis, lumbalgia, capsulitis adhesiva, fascitis plantar, cervicalgia, luxaciones, esguinces y fracturas. Para pacientes pediátricos, adultos y adultos mayores.</p></article>
+      <article class="tarjeta"><h3>Fisioterapia pediátrica</h3>
+        <p>Abordaje del retardo del desarrollo y estimulación temprana, para propiciar experiencias somatosensoriales que aumenten el desarrollo, el control motor, el aprendizaje sensoriomotriz, las habilidades y las capacidades motoras del niño o la niña.</p></article>
+      <article class="tarjeta"><h3>Fisioterapia geriátrica</h3>
+        <p>Promueve el envejecimiento activo y consciente, como una etapa del ciclo vital. Abordajes para prevención de caídas, independencia funcional, sarcopenia y patologías musculoesqueléticas y neuromusculares.</p></article>
+      <article class="tarjeta"><h3>Terapia con ondas de choque radiales</h3>
+        <p>Tratamiento no invasivo que aplica ondas acústicas de alta energía en puntos dolorosos y tejidos musculoesqueléticos, promoviendo su regeneración. Eficaz para el manejo del dolor, con evidencia en tendinopatías, epicondilitis, manguito rotador, fascitis plantar crónica, espolón calcáneo, túnel del carpo y puntos gatillo.</p></article>
+      <article class="tarjeta"><h3>Presoterapia</h3>
+        <p>Dispositivo terapéutico no invasivo con cámaras inflables que mejora el flujo linfático y sanguíneo de brazos y piernas. Indicada en linfedema, inflamación postraumática y postquirúrgica, síndrome de piernas pesadas y várices.</p></article>
+    </div>
+    <div class="nota">
+      <a class="btn btn-teal" href="https://wa.me/573184845709?text=Hola%2C%20quisiera%20conocer%20los%20precios%20de%20los%20servicios%20de%20KABIR%20IPS" target="_blank" rel="noopener">Consultar precios por WhatsApp</a>
+      <span>Modalidad: presencial, con atención personalizada.</span>
+    </div>
+  </div>
+</section>
+
+<!-- SECCIÓN DE HORARIOS Y UBICACIÓN -->
+<section id="horarios">
+  <div class="wrap">
+    <h2>Horarios y ubicación</h2>
+    <p class="lead">Atendemos de lunes a sábado. Para asegurar su turno, solicite la cita por WhatsApp.</p>
+    <div class="cajas">
+      <div class="caja">
+        <h3>Horario de atención</h3>
+        <ul>
+          <li><span>Lunes a viernes</span><strong>8 am – 12 m</strong></li>
+          <li><span></span><strong>2 pm – 6 pm</strong></li>
+          <li><span>Sábados</span><strong>8 am – 12 m</strong></li>
+        </ul>
+      </div>
+      <div class="caja">
+        <h3>Dirección</h3>
+        <p>Cra 9b N° 6-17, piso 1<br>Barrio Las Avenidas<br>Florencia, Caquetá</p>
+        <p style="margin-top:12px"><a href="https://www.google.com/maps/search/?api=1&query=Cra+9b+%236-17+Florencia+Caqueta" target="_blank" rel="noopener">Ver en Google Maps</a></p>
+      </div>
+      <div class="caja">
+        <h3>Medios de pago</h3>
+        <p>Efectivo y transferencias.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECCIÓN DE CONTACTO Y REDES SOCIALES -->
+<section id="contacto" style="background:#fff">
+  <div class="wrap">
+    <h2>Contacto</h2>
+    <p class="lead">Escríbanos para agendar su valoración inicial o resolver sus dudas.</p>
+    <div class="cajas">
+      <div class="caja">
+        <h3>WhatsApp</h3>
+        <p><a href="https://wa.me/573184845709" target="_blank" rel="noopener">318 484 5709</a></p>
+        <p style="margin-top:12px"><a class="btn btn-rojo" href="https://w.app/fyrmqw" target="_blank" rel="noopener">Solicitar cita</a></p>
+      </div>
+      <div class="caja">
+        <h3>Correo electrónico</h3>
+        <p><a href="mailto:kabirfisioips@gmail.com">kabirfisioips@gmail.com</a></p>
+      </div>
+      <div class="caja">
+        <h3>Síganos</h3>
+        <!-- REDES: los enlaces se editan en "ENLACES" (al final, en el <script>) -->
+        <div class="redes">
+          <a href="#" id="redInstagram" target="_blank" rel="noopener" aria-label="Instagram de KABIR IPS"><svg viewBox="0 0 24 24"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3H7zm5 3.5a4.5 4.5 0 1 1 0 9 4.5 4.5 0 0 1 0-9zm0 2a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM17.3 5.9a1.1 1.1 0 1 1 0 2.2 1.1 1.1 0 0 1 0-2.2z"/></svg></a>
+          <a href="#" id="redFacebook" target="_blank" rel="noopener" aria-label="Facebook de KABIR IPS"><svg viewBox="0 0 24 24"><path d="M13.5 22v-8.2h2.8l.5-3.3h-3.3V8.4c0-.9.4-1.7 1.8-1.7H17V3.8S15.8 3.6 14.7 3.6c-2.6 0-4.2 1.6-4.2 4.4v2.5H7.7v3.3h2.8V22h3z"/></svg></a>
+          <a href="#" id="redTiktok" target="_blank" rel="noopener" aria-label="TikTok de KABIR IPS"><svg viewBox="0 0 24 24"><path d="M16.6 2h-3.2v13.2a2.8 2.8 0 1 1-2.8-2.8c.3 0 .6 0 .8.1V9.2a6 6 0 1 0 5.2 5.9V8.7a7.4 7.4 0 0 0 4.4 1.4V7a4.4 4.4 0 0 1-4.4-5z"/></svg></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECCIÓN PQRS -->
+<section id="pqrs">
+  <div class="wrap">
+    <h2>Peticiones, quejas, reclamos y sugerencias</h2>
+    <p class="lead" style="margin-bottom:20px">Su opinión nos ayuda a mejorar la atención. Envíe su petición, queja, reclamo, sugerencia o felicitación por cualquiera de estos canales.</p>
+    <a class="btn btn-teal" href="mailto:kabirfisioips@gmail.com?subject=PQRS%20-%20KABIR%20IPS">Enviar PQRS por correo</a>
+    <a class="btn btn-borde" href="https://wa.me/573184845709?text=Hola%2C%20quiero%20radicar%20una%20PQRS" target="_blank" rel="noopener">Enviar PQRS por WhatsApp</a>
+  </div>
+</section>
+</main>
+
+<!-- PIE DE PÁGINA: DATOS LEGALES -->
+<footer>
+  <div class="wrap">
+    <div class="pie">
+      <div>
+        <div class="pie-logo"><img src="assets/logo.png" alt="Logo de KABIR IPS S.A.S."></div>
+        <p><strong style="color:#fff">KABIR IPS S.A.S.</strong></p>
+        <p>NIT: 901.444.105</p>
+        <p>Unidad de Fisioterapia y Rehabilitación Integral Kabir Zomac S.A.S.</p>
+      </div>
+      <div>
+        <h3>Contacto</h3>
+        <p>WhatsApp: <a href="https://wa.me/573184845709" target="_blank" rel="noopener">318 484 5709</a></p>
+        <p><a href="mailto:kabirfisioips@gmail.com">kabirfisioips@gmail.com</a></p>
+        <p>Cra 9b N° 6-17, piso 1, Barrio Las Avenidas, Florencia, Caquetá</p>
+      </div>
+      <div>
+        <h3>Horario de atención</h3>
+        <p>Lunes a viernes:<br>8 am – 12 m y 2 pm – 6 pm</p>
+        <p>Sábados: 8 am – 12 m</p>
+      </div>
+      <!-- DOCUMENTOS LEGALES (los enlaces editables están en "ENLACES" en el <script>) -->
+      <div>
+        <h3>Documentos</h3>
+        <ul>
+          <li><a href="#" id="abrirPolitica">Política de tratamiento y protección de datos personales</a></li>
+          <li><a id="linkParticipacion" href="#" target="_blank" rel="noopener">Política de participación social</a></li>
+          <li><a id="linkFinancieros" href="#" target="_blank" rel="noopener">Estados financieros</a></li>
+        </ul>
+      </div>
+    </div>
+    <p class="legal">© <span id="anio"></span> KABIR IPS S.A.S. – NIT 901.444.105. Todos los derechos reservados.</p>
+  </div>
+</footer>
+
+<!-- BOTÓN FLOTANTE DE WHATSAPP -->
+<a class="wa" href="https://w.app/fyrmqw" target="_blank" rel="noopener" aria-label="Solicitar cita por WhatsApp">
+  <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2c-1.5 0-3-.4-4.2-1.200l-.3-.2-3 .8.8-2.9-.2-.3A8.200 8.200 0 1 1 12 20.200zm4.500-6.100c-.2-.1-1.500-.7-1.700-.8-.2-.1-.4-.1-.6.100l-.8 1c-.1.200-.3.200-.5.100a6.700 6.700 0 0 1-3.300-2.900c-.2-.4.200-.4.700-1.300.1-.2 0-.3 0-.5l-.8-1.800c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.300 3 3 0 0 0-.9 2.200c0 1.300.9 2.500 1 2.700.1.200 1.800 2.800 4.400 3.900 1.600.7 2.300.8 3.100.6.500-.1 1.500-.6 1.700-1.200.2-.6.2-1.100.2-1.200-.1-.1-.3-.2-.5-.3z"/></svg>
+  <span>Solicitar cita</span>
+</a>
+
+<!-- VENTANA: POLÍTICA DE PROTECCIÓN DE DATOS -->
+<dialog id="politica" aria-labelledby="politicaTitulo">
+  <div class="dlg-cab">
+    <h2 id="politicaTitulo">Política de tratamiento y protección de datos personales</h2>
+    <button class="btn btn-borde" id="cerrarPolitica" style="padding:6px 16px">Cerrar</button>
+  </div>
+  <div class="dlg-cuerpo">
+<!-- Texto de la política (editable) -->
+<h3>1. Identificación del Responsable del Tratamiento</h3>
+<p><strong>Razón Social:</strong>  UNIDAD DE FISIOTERAPIA Y REHABILITACIÓN INTEGRAL KABIR ZOMAC S.A.S. (En adelante, <strong>KABIR IPS</strong> ).</p>
+<p><strong>Slogan:</strong>  “Su rehabilitación en nuestras manos” <strong>Marca Comercial:</strong>  KABIR IPS <strong>Objeto Social:</strong>  Prestación de servicios de salud, fisioterapia y rehabilitación integral.</p>
+<h3>2. Marco Legal y Ámbito de Aplicación</h3>
+<p>La presente Política de Tratamiento de Datos Personales se elabora de conformidad con el artículo 15 y 20 de la Constitución Política de Colombia, la <strong>Ley Estatuaria 1581 de 2012</strong> , el <strong>Decreto Reglamentario 1377 de 2013</strong>  (compilado en el Decreto Único 1074 de 2015), la <strong>Ley 1266 de 2008</strong>  y demás normas que las modifiquen, adicionen o complementen. Esta política aplica a todos los datos personales recolectados, almacenados, usados, circulados, suprimidos o tratados por <strong>KABIR IPS</strong>  a través de sus canales físicos, digitales o el portal web institucional.</p>
+<h3>3. Principios Rectores</h3>
+<p>En el tratamiento de datos personales, <strong>KABIR IPS</strong>  aplicará los principios de legalidad, finalidad, libertad, veracidad o calidad, transparencia, acceso y circulación restringida, seguridad y confidencialidad.</p>
+<h3>4. Categorías de Datos Recolectados y Tratamiento Especial de Datos Sensibles</h3>
+<p><strong>KABIR IPS</strong>  recolecta y trata datos de identificación, contacto, datos demográficos, laborales y financieros de sus usuarios, pacientes, colaboradores y proveedores.</p>
+<p><strong>Datos Sensibles y de Salud</strong>  Se consideran <strong>datos sensibles</strong>  aquellos que afectan la intimidad del Titular o cuyo uso indebido puede generar su discriminación, en particular los relacionados con el estado de salud, historia clínica, diagnósticos, antecedentes médicos, datos biométricos y de rehabilitación.</p>
+<p><strong>Tratamiento de Datos de Salud:</strong>  La recolección y tratamiento de la Historia Clínica y datos asistenciales se rige prioritariamente por la <strong>Ley 23 de 1981</strong> , la <strong>Resolución 1995 de 1999</strong> , la <strong>Resolución 839 de 2017</strong>  del Ministerio de Salud y Protección Social, y las normas concordantes del Sistema General de Seguridad Social en Salud (SGSSS).</p>
+<p><strong>Autorización:</strong>  El otorgamiento de autorización para el tratamiento de datos sensibles es facultativo, salvo que por mandato legal o constitucional el tratamiento sea obligatorio para la prestación o garantía del servicio asistencial de salud.</p>
+<h3>5. Finalidades del Tratamiento de los Datos</h3>
+<p>Los datos personales proporcionados a <strong>KABIR IPS</strong>  serán tratados para las siguientes finalidades:</p>
+<p><strong>A. Finalidades Asistenciales y Administrativas (Pacientes y Usuarios)</strong>  Prestación de servicios de fisioterapia, rehabilitación integral y consultas de salud. Apertura, administración, custodia y conservación de la Historia Clínica. Agendamiento, confirmación, cancelación o reprogramación de citas médicas y terapias. Facturación de servicios, radicación de cuentas de cobro, conciliación de glosas y gestión de cartera ante la EPS, ARL, SOAT o particulares. Reporte de información obligatoria a entidades de inspección, vigilancia y control (Superintendencia Nacional de Salud, Ministerio de Salud, Direcciones Territoriales de Salud, RIPS, entre otros). Medición de la satisfacción del usuario, gestión de PQRSDF y auditoría de calidad en la atención.</p>
+<p><strong>B. Finalidades Generales y Comerciales</strong>  Envío de boletines informativos, recomendaciones de salud, promociones o novedades de los servicios ofertados a través del sitio web o canales digitales. Gestión de trámites de selección, contratación y administración de personal y proveedores. Control de seguridad y acceso a las instalaciones físicas mediante sistemas de videovigilancia.</p>
+<h3>6. Derechos de los Titulares de la Información</h3>
+<p>De acuerdo con el artículo 8 de la Ley 1581 de 2012, los titulares de los datos tienen los siguientes derechos:</p>
+<p><strong>Conocer, actualizar y rectificar</strong>  sus datos personales frente a <strong>KABIR IPS</strong> .</p>
+<p><strong>Solicitar prueba</strong>  de la autorización otorgada, salvo las excepciones previstas en la ley.</p>
+<p><strong>Ser informado</strong>  por la IPS, previa solicitud, respecto del uso que le ha dado a sus datos personales.</p>
+<p><strong>Presentar quejas</strong>  ante la Superintendencia de Industria y Comercio (SIC) por infracciones a lo dispuesto en la normatividad vigente.</p>
+<p><strong>Revocar la autorización y/o solicitar la supresión</strong>  del dato cuando en el tratamiento no se respeten los principios, derechos y garantías constitucionales y legales (la supresión no procederá cuando exista un deber legal o contractual de permanecer en la base de datos, como en el caso de la Historia Clínica).</p>
+<p><strong>Acceder en forma gratuita</strong>  a sus datos personales que hayan sido objeto de Tratamiento.</p>
+<h3>7. Procedimiento para el Ejercicio de los Derechos (Habeas Data)</h3>
+<p>Los titulares o sus causahabientes podrán ejercer sus derechos de consulta, reclamo, actualización y supresión mediante comunicación escrita dirigida al área encargada de Protección de Datos de <strong>KABIR IPS</strong> :</p>
+<p><strong>Correo Electrónico de Contacto:</strong>  kabirfisioips@gmail.com <strong>Dirección Física:</strong>  Cra 9b N° 6-17 Piso 1.</p>
+<p><strong>Teléfono de Atención:</strong>  3184845709 <strong>Tiempos de Respuesta:</strong>  <strong>Consultas:</strong>  Serán atendidas en un término máximo de diez (10) días hábiles contados a partir de la fecha de recibo. Cuando no fuere posible atender la consulta dentro de dicho término, se informará al interesado expresando los motivos de la demora y señalando la fecha en que se atenderá, la cual en ningún caso podrá superar los cinco (5) días hábiles siguientes al vencimiento del primer término.</p>
+<p><strong>Reclamos o Solicitudes de Modificación/Supresión:</strong>  Se resolverán en un término máximo de quince (15) días hábiles contados a partir del día siguiente a la fecha de su recibo. Si el reclamo resulta incompleto, se requerirá al interesado dentro de los cinco (5) días siguientes a la recepción para que subsane las fallas.</p>
+<h3>8. Seguridad de la Información</h3>
+<p><strong>KABIR IPS</strong>  adopta las medidas técnicas, humanas y administrativas necesarias para otorgar seguridad a los registros, evitando su adulteración, pérdida, consulta, uso o acceso no autorizado o fraudulento, en cumplimiento del principio de seguridad de la información.</p>
+<h3>9. Vigencia y Modificaciones</h3>
+<p>La presente política rige a partir de su publicación en el sitio web institucional. Las bases de datos que contienen información de los usuarios y pacientes se mantendrán vigentes durante el tiempo que sea necesario para cumplir con las finalidades descritas o según lo dispuesto en las normas legales aplicables a la retención de historias clínicas y documentos contables. Cualquier cambio sustancial en las políticas de tratamiento será comunicado oportunamente a través del portal web de <strong>KABIR IPS</strong> .</p>
+  </div>
+</dialog>
+
+<script>
+/* ===== CONFIGURACIÓN DE IMÁGENES DEL CARRUSEL (5 imágenes) =====
+   Las imágenes se cargan con rutas relativas desde la carpeta assets/ del repositorio (GitHub Pages).
+   Suba los 5 archivos Gemini_Generated_Image_*.jpg y logo.png a la carpeta assets/. */
+const IMAGENES_CARRUSEL = [
+  { archivo: "Gemini_Generated_Image_rd5j95rd5j95rd5j.jpg", alt: "KABIR IPS: Su rehabilitación en nuestras manos. Servicio integral de fisioterapia" },
+  { archivo: "Gemini_Generated_Image_dyx7fvdyx7fvdyx7.jpg", alt: "Fisioterapia geriátrica: envejecimiento activo" },
+  { archivo: "Gemini_Generated_Image_30fhtv30fhtv30fh.jpg", alt: "Terapia con ondas de choque: tecnología y precisión" },
+  { archivo: "Gemini_Generated_Image_pby21bpby21bpby2.jpg", alt: "Fisioterapia pediátrica: estimulación y desarrollo" },
+  { archivo: "Gemini_Generated_Image_5zvizv5zvizv5zvi.jpg", alt: "Fisioterapia ortopédica: recuperación de lesiones" }
+];
+const INTERVALO_MS = 5000; // tiempo entre imágenes (5000 = 5 segundos)
+
+/* ===== ENLACES EDITABLES (redes y documentos del pie de página) ===== */
+const ENLACES = {
+  instagram: "#",           // ej. "https://www.instagram.com/su_usuario"
+  facebook: "#",            // ej. "https://www.facebook.com/su_pagina"
+  tiktok: "#",              // ej. "https://www.tiktok.com/@su_usuario"
+  participacionSocial: "#", // ej. "assets/politica-participacion-social.pdf"
+  estadosFinancieros: "#"   // ej. "assets/estados-financieros.pdf"
+};
+
+/* ===== LÓGICA DEL CARRUSEL (no es necesario editar) ===== */
+(function () {
+  const cont = document.getElementById("slides"), puntos = document.getElementById("puntos");
+  const caja = document.getElementById("carrusel"), total = IMAGENES_CARRUSEL.length;
+  let i = 0, timer;
+  IMAGENES_CARRUSEL.forEach((im, n) => {
+    const d = document.createElement("div"); d.className = "slide";
+    const img = document.createElement("img");
+    img.alt = im.alt; img.decoding = "async"; img.draggable = false;
+    img.width = 1449; img.height = 720;
+    img.src = "assets/" + im.archivo;
+    d.appendChild(img); cont.appendChild(d);
+    const b = document.createElement("button");
+    b.className = "punto"; b.setAttribute("aria-label", "Ir a la imagen " + (n + 1));
+    b.onclick = () => { ir(n); reiniciar(); }; puntos.appendChild(b);
+  });
+  function ir(n) {
+    i = (n + total) % total;
+    cont.style.transform = "translateX(-" + i * 100 + "%)";
+    [...puntos.children].forEach((p, k) => p.classList.toggle("activo", k === i));
+  }
+  function reiniciar() { clearInterval(timer); timer = setInterval(() => ir(i + 1), INTERVALO_MS); }
+  document.getElementById("prev").onclick = () => { ir(i - 1); reiniciar(); };
+  document.getElementById("next").onclick = () => { ir(i + 1); reiniciar(); };
+  caja.addEventListener("mouseenter", () => clearInterval(timer));
+  caja.addEventListener("mouseleave", reiniciar);
+  let x0 = null; // deslizar con el dedo en celulares
+  caja.addEventListener("touchstart", e => x0 = e.touches[0].clientX, { passive: true });
+  caja.addEventListener("touchcancel", () => x0 = null, { passive: true });
+  caja.addEventListener("touchend", e => {
+    if (x0 === null) return;
+    const d = e.changedTouches[0].clientX - x0;
+    if (Math.abs(d) > 40) { ir(d < 0 ? i + 1 : i - 1); reiniciar(); }
+    x0 = null;
+  });
+  ir(0);
+  if (!matchMedia("(prefers-reduced-motion: reduce)").matches) reiniciar();
+})();
+
+/* ===== MENÚ MÓVIL, ENLACES Y VENTANA DE POLÍTICA ===== */
+const menu = document.getElementById("menu"), mBtn = document.getElementById("menuBtn");
+mBtn.onclick = () => mBtn.setAttribute("aria-expanded", menu.classList.toggle("abierto"));
+menu.querySelectorAll("a").forEach(a => a.onclick = () => menu.classList.remove("abierto"));
+document.getElementById("redInstagram").href = ENLACES.instagram;
+document.getElementById("redFacebook").href = ENLACES.facebook;
+document.getElementById("redTiktok").href = ENLACES.tiktok;
+document.getElementById("linkParticipacion").href = ENLACES.participacionSocial;
+document.getElementById("linkFinancieros").href = ENLACES.estadosFinancieros;
+document.getElementById("anio").textContent = new Date().getFullYear();
+const dlg = document.getElementById("politica");
+document.getElementById("abrirPolitica").onclick = e => { e.preventDefault(); dlg.showModal(); };
+document.getElementById("cerrarPolitica").onclick = () => dlg.close();
+dlg.addEventListener("click", e => { if (e.target === dlg) dlg.close(); });
+</script>
+</body>
+</html>
